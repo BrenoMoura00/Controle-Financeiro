@@ -11,31 +11,31 @@ public class RepositorioEntradas implements IRepositorios<Entradas> {
 
     @Override
     public void salvar(Entradas entidade) {
-        listaEntradas.add(entidade);
+        this.listaEntradas.add(entidade);
     }
 
     @Override
     public void alterar(Entradas entidade) {
         Entradas existente = buscarPorId(entidade.getId());
         if (existente != null) {
-            listaEntradas.remove(existente);
-            listaEntradas.add(entidade);
+            this.listaEntradas.remove(existente);
+            this.listaEntradas.add(entidade);
         }
     }
 
     @Override
     public void deletar(int id) {
-        listaEntradas.removeIf(entidade -> entidade.getId() == id);
+        this.listaEntradas.removeIf(entidade -> entidade.getId() == id);
     }
 
     @Override
     public List<Entradas> listar() {
-        return new ArrayList<>(listaEntradas);
+        return new ArrayList<>(this.listaEntradas);
     }
 
     @Override
     public Entradas buscarPorId(int id) {
-        for (Entradas entrada : listaEntradas) {
+        for (Entradas entrada : this.listaEntradas) {
             if (entrada.getId() == id) {
                 return entrada;
             }
