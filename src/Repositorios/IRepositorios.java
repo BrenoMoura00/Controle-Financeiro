@@ -1,7 +1,5 @@
 package Repositorios;
 
-import Entidades.Entradas;
-
 import java.util.List;
 
 public interface IRepositorios<T> {

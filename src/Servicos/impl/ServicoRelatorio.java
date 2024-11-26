@@ -1,29 +1,45 @@
 package Servicos.impl;
 
+import Entidades.Entradas;
+import Entidades.Saidas;
+import Repositorios.impl.RepositorioEntradas;
+import Repositorios.impl.RepositorioSaidas;
 import Servicos.IServicoRelatorio;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServicoRelatorio implements IServicoRelatorio {
-    List<String> listaGastos = new ArrayList<>();
+
+    private RepositorioEntradas repositorioEntradas;
+    private RepositorioSaidas repositorioSaidas;
+
+    List<Saidas> listaGastos = new ArrayList<>();
+    List<Entradas> listaEntradas = new ArrayList<>();
+
+    public ServicoRelatorio(RepositorioEntradas repositorioEntradas, RepositorioSaidas repositorioSaidas) {
+        this.repositorioEntradas = repositorioEntradas;
+        this.repositorioSaidas = repositorioSaidas;
+    }
+
     @Override
     public double calcularTotalEntradas() {
+        return repositorioEntradas.listar().stream().mapToDouble(Entradas::getValor).sum();
 
     }
 
     @Override
     public double calcularTotalSaidas() {
-        return 0;
+        return repositorioSaidas.listar().stream().mapToDouble(Saidas::getValor).sum();
     }
 
     @Override
     public List<String> listarDescricoesGastos() {
-        return
+        return repositorioSaidas.listar().stream().map(Saidas::getDescricao).toList();
     }
 
     @Override
     public double calcularSaldoTotal() {
-        return 0;
+        return calcularTotalEntradas() - calcularTotalSaidas();
     }
 }
