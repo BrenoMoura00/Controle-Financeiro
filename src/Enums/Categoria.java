@@ -1,13 +1,17 @@
 package Enums;
 
 public enum Categoria {
-    ALIMENTACAO("Gastos com alimentação e bebidas"),
-    TRANSPORTE("Gastos com transporte público, combustível, etc."),
-    LAZER("Gastos com atividades de lazer e entretenimento"),
-    SALARIO("Entradas de dinheiro relacionadas a salário"),
-    INVESTIMENTOS("Entradas de dinheiro de investimentos"),
-    SAUDE("Gastos com saúde, medicamentos, consultas"),
-    EDUCACAO("Gastos com educação, cursos, livros");
+    ALIMENTACAO("Gastos com alimentação, bebidas e restaurantes"),
+    TRANSPORTE("Gastos com transporte público, combustível, e manutenção de veículos"),
+    MORADIA("Gastos com aluguel, condomínio, água, luz e gás"),
+    SAUDE("Gastos com consultas, medicamentos e exames"),
+    EDUCACAO("Gastos com cursos, mensalidades, materiais escolares e livros"),
+    LAZER("Gastos com atividades de lazer, viagens e entretenimento"),
+    VESTUARIO("Gastos com roupas, calçados e acessórios"),
+    SERVICOS("Gastos com serviços gerais como limpeza, manutenção e assinatura de serviços digitais"),
+    SALARIO("Recebimentos relacionados a salário e trabalho"),
+    INVESTIMENTOS("Entradas de dinheiro vindas de aplicações financeiras ou venda de ativos"),
+    OUTROS("Gastos ou entradas que não se encaixam em outras categorias");
 
     private final String descricao;
 
