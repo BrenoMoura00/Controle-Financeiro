@@ -8,6 +8,7 @@ import Servicos.IServicoRelatorio;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ServicoRelatorio implements IServicoRelatorio {
 
@@ -35,7 +36,14 @@ public class ServicoRelatorio implements IServicoRelatorio {
 
     @Override
     public List<String> listarDescricoesGastos() {
-        return repositorioSaidas.listar().stream().map(Saidas::getDescricao).toList();
+        return repositorioSaidas.listar().stream().map(saida -> " (" + saida.getId() + ") " + saida.getDescricao())
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> listarDescricoesEntradas() {
+        return repositorioEntradas.listar().stream().map(entrada -> " (" + entrada.getId() + ") " + entrada.getDescricao())
+                .collect(Collectors.toList());
     }
 
     @Override
